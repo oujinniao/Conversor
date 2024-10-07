@@ -31,8 +31,8 @@ public class ConversorDeDivisas {
 
             // Verifica si la clave "rates" existe
 
-            if (jsonObject.has("rates")) {
-                JsonObject rates = jsonObject.getAsJsonObject("rates");
+            if (jsonObject.has("conversion_rates")) {
+                JsonObject rates = jsonObject.getAsJsonObject("conversion_rates");
                 if (rates.has(monedaDestino)) {
                     double tasaCambio = rates.get(monedaDestino).getAsDouble();
                     return cantidad * tasaCambio;
@@ -51,7 +51,7 @@ public class ConversorDeDivisas {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         int opcion;
-        double cantidad = 0; // Inicializa la variable cantidad
+        double cantidad = 0;
 
         do {
             System.out.println("Bienvenido al Conversor de Divisas");
