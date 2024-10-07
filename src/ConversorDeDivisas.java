@@ -25,11 +25,12 @@ public class ConversorDeDivisas {
             while ((line = reader.readLine()) != null) {
                 result.append(line);
             }
+            System.out.println("Respuesta de la API: " +result.toString());
 
             JsonObject jsonObject = new Gson().fromJson(result.toString(), JsonObject.class);
 
             // Verifica si la clave "rates" existe
-            
+
             if (jsonObject.has("rates")) {
                 JsonObject rates = jsonObject.getAsJsonObject("rates");
                 if (rates.has(monedaDestino)) {
@@ -43,7 +44,7 @@ public class ConversorDeDivisas {
             }
         } catch (Exception e) {
             System.err.println("Error al obtener la tasa de cambio: " + e.getMessage());
-            throw e; // Re-lanza la excepción para un manejo más detallado
+            throw e;
         }
     }
 
@@ -75,10 +76,25 @@ public class ConversorDeDivisas {
 
             switch (opcion) {
                 case 1:
-                    double resultado = convertir("USD", "EUR", cantidad);
-                    System.out.println("El resultado es: " + resultado);
+                    double resultado1 = convertir("USD", "EUR", cantidad);
+                    System.out.println("El resultado es: " + resultado1);
                     break;
-                // Agrega otros casos según sea necesario
+                case 2:
+                    double resultado2 = convertir("EUR", "USD", cantidad);
+                    System.out.println("El resultado es: " + resultado2);
+                    break;
+                case 3:
+                    double resultado3 = convertir("MXN", "USD", cantidad);
+                    System.out.println("El resultado es: " + resultado3);
+                    break;
+                case 4:
+                    double resultado4 = convertir("BRL", "USD", cantidad);
+                    System.out.println("El resultado es: " + resultado4);
+                    break;
+                case 5:
+                    double resultado5 = convertir("JPY", "USD", cantidad);
+                    System.out.println("El resultado es: " + resultado5);
+                    break;
                 case 6:
                     System.out.println("Gracias por utilizar el Conversor");
                     break;
